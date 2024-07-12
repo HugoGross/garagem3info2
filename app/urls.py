@@ -50,3 +50,12 @@ from core.views import AcessorioViewSet # nova linha
 router = DefaultRouter()
 router.register(r"acessorios", AcessorioViewSet) # nova linha
 router.register(r"users", UserViewSet, basename="users")
+
+
+
+from core.views import UserViewSet
+from core.views import CorViewSet # nova linha
+
+router = DefaultRouter()
+router.register(r"cores", CorViewSet) # nova linha
+router.register(r"users", UserViewSet, basename="users")
