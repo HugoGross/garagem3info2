@@ -9,11 +9,21 @@ from drf_spectacular.views import (
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from core.views import UserViewSet
+from core.views import (
+    AcessorioViewSet,
+    CategoriaViewSet,
+    CorViewSet,
+    MarcaViewSet,
+    UserViewSet,
+)
 
 router = DefaultRouter()
 
+router.register(r"acessorios", AcessorioViewSet)
 router.register(r"usuarios", UserViewSet, basename="usuarios")
+router.register(r"categorias", CategoriaViewSet)
+router.register(r"cores", CorViewSet)
+router.register(r"marcas", MarcaViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,36 +45,3 @@ urlpatterns = [
     # API
     path("api/", include(router.urls)),
 ]
-
-from core.views import UserViewSet
-from core.views import CategoriaViewSet # nova linha
-
-router = DefaultRouter()
-router.register(r"categorias", CategoriaViewSet) # nova linha
-router.register(r"users", UserViewSet, basename="users")
-
-
-from core.views import UserViewSet
-from core.views import AcessorioViewSet # nova linha
-
-router = DefaultRouter()
-router.register(r"acessorios", AcessorioViewSet) # nova linha
-router.register(r"users", UserViewSet, basename="users")
-
-
-
-from core.views import UserViewSet
-from core.views import CorViewSet # nova linha
-
-router = DefaultRouter()
-router.register(r"cores", CorViewSet) # nova linha
-router.register(r"users", UserViewSet, basename="users")
-
-
-
-from core.views import UserViewSet
-from core.views import MarcaViewSet # nova linha
-
-router = DefaultRouter()
-router.register(r"marcas", MarcaViewSet) # nova linha
-router.register(r"users", UserViewSet, basename="users")
